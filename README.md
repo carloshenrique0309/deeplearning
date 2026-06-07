@@ -77,10 +77,45 @@ Um modelo capaz de classificar automaticamente reviews de filmes com boa precis�
 IMDb-Sentiment-Analysis/
 │
 ├── data/
-├── notebooks/
-├── models/
-├── src/
+│   └── raw/           # dataset original aclImdb
+├── notebooks/         # análises, pré-processamento e treinamento
+├── models/            # modelos treinados
+├── src/               # funções auxiliares usadas nos notebooks
 ├── requirements.txt
 ├── README.md
 └── main.py
 ```
+
+## Preparação inicial
+
+Com o arquivo `aclImdb_v1.tar.gz`, extraia o dataset para `data/raw/`:
+
+```bash
+tar -xzf aclImdb_v1.tar.gz -C data/raw
+```
+
+Depois, valide a estrutura:
+
+```bash
+python main.py
+```
+
+## Observação sobre os dados
+
+O dataset já vem dividido em pastas por conjunto e classe:
+
+```bash
+aclImdb/
+├── train/
+│   ├── pos/
+│   └── neg/
+└── test/
+    ├── pos/
+    └── neg/
+```
+
+Cada review é um arquivo `.txt`, e o nome segue o formato `id_rating.txt`.
+Para treinar com TensorFlow/Keras, não é necessário converter tudo para CSV.
+A limpeza, tokenização, vetorização e padding podem acontecer no pipeline de
+treinamento. A pasta `data/processed/` só deve ser criada se gerarmos algum
+artefato intermediário que realmente facilite o experimento.
