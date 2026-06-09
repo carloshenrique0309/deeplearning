@@ -115,7 +115,3 @@ aclImdb/
 ```
 
 Cada review é um arquivo `.txt`, e o nome segue o formato `id_rating.txt`.
-Para treinar com TensorFlow/Keras, não é necessário converter tudo para CSV.
-A limpeza, tokenização, vetorização e padding podem acontecer no pipeline de
-treinamento. A pasta `data/processed/` só deve ser criada se gerarmos algum
-artefato intermediário que realmente facilite o experimento.
